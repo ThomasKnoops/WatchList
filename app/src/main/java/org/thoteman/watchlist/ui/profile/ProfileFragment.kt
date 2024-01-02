@@ -1,4 +1,4 @@
-package org.thoteman.watchlist.ui.dashboard
+package org.thoteman.watchlist.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import org.thoteman.watchlist.databinding.FragmentDashboardBinding
+import org.thoteman.watchlist.databinding.FragmentProfileBinding
 
-class DashboardFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-private var _binding: FragmentDashboardBinding? = null
+private var _binding: FragmentProfileBinding? = null
   // This property is only valid between onCreateView and
   // onDestroyView.
   private val binding get() = _binding!!
@@ -21,14 +21,14 @@ private var _binding: FragmentDashboardBinding? = null
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+    val profileViewModel =
+            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-    _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+    _binding = FragmentProfileBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val textView: TextView = binding.textDashboard
-    dashboardViewModel.text.observe(viewLifecycleOwner) {
+    val textView: TextView = binding.textProfile
+    profileViewModel.text.observe(viewLifecycleOwner) {
       textView.text = it
     }
     return root

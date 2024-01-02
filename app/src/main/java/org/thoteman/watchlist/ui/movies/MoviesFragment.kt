@@ -1,4 +1,4 @@
-package org.thoteman.watchlist.ui.home
+package org.thoteman.watchlist.ui.movies
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import org.thoteman.watchlist.databinding.FragmentHomeBinding
+import org.thoteman.watchlist.databinding.FragmentMoviesBinding
 
-class HomeFragment : Fragment() {
+class MoviesFragment : Fragment() {
 
-private var _binding: FragmentHomeBinding? = null
+private var _binding: FragmentMoviesBinding? = null
   // This property is only valid between onCreateView and
   // onDestroyView.
   private val binding get() = _binding!!
@@ -21,14 +21,14 @@ private var _binding: FragmentHomeBinding? = null
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+    val moviesViewModel =
+            ViewModelProvider(this).get(MoviesViewModel::class.java)
 
-    _binding = FragmentHomeBinding.inflate(inflater, container, false)
+    _binding = FragmentMoviesBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val textView: TextView = binding.textHome
-    homeViewModel.text.observe(viewLifecycleOwner) {
+    val textView: TextView = binding.textMovies
+    moviesViewModel.text.observe(viewLifecycleOwner) {
       textView.text = it
     }
     return root

@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_movies">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="org.thoteman.watchlist.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_movies"
+        android:name="org.thoteman.watchlist.ui.movies.MoviesFragment"
+        android:label="@string/title_movies"
+        tools:layout="@layout/fragment_movies" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="org.thoteman.watchlist.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_watchlist"
+        android:name="org.thoteman.watchlist.ui.watchlist.WatchlistFragment"
+        android:label="@string/title_watchlist"
+        tools:layout="@layout/fragment_watchlist" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="org.thoteman.watchlist.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_profile"
+        android:name="org.thoteman.watchlist.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
