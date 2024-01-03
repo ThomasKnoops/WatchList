@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "891013423057",
+    "project_id": "watchlist-a3319",
+    "storage_bucket": "watchlist-a3319.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891013423057:android:ad9a0cfd2a8942b3cb4af0",
+        "android_client_info": {
+          "package_name": "org.thoteman.watchlist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCb1aMPCocUe8Bfd_ggqqv1_oTMf9awbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
