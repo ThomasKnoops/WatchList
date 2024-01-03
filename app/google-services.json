@@ -12,7 +12,20 @@
           "package_name": "org.thoteman.watchlist"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "891013423057-4v9ib09jmhr5os3h71nor8rd19rh276a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.thoteman.watchlist",
+            "certificate_hash": "2fa72f1e46d5df833ed9607d5c36eca89c1bf2ea"
+          }
+        },
+        {
+          "client_id": "891013423057-jdc5p8mgk66d18k2c5t643p2arv3ldqj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBCb1aMPCocUe8Bfd_ggqqv1_oTMf9awbE"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891013423057-jdc5p8mgk66d18k2c5t643p2arv3ldqj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
