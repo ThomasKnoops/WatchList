@@ -3,4 +3,11 @@
     <string name="title_movies">Movies</string>
     <string name="title_watchlist">Watchlist</string>
     <string name="title_profile">Profile</string>
+    <string name="login">Login</string>
+    <string name="new_sign_up_now">New? Sign Up now!</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="prompt_email">Enter your email</string>
+    <string name="prompt_password">Enter your password</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="action_sign_in">Sign In</string>
 </resources>
