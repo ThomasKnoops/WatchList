@@ -47,4 +47,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLoginL" />
+
+    <TextView
+        android:id="@+id/labelEmailL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:labelFor="@id/labelEmailL"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmailL"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmailL" />
+
+    <TextView
+        android:id="@+id/labelPasswordL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:labelFor="@id/labelPasswordL"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPasswordL"
+        app:layout_constraintStart_toStartOf="@+id/editTextPasswordL" />
 </androidx.constraintlayout.widget.ConstraintLayout>

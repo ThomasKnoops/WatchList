@@ -51,4 +51,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordConfirmationR" />
+
+    <TextView
+        android:id="@+id/labelEmailR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/editTextEmailR"
+        android:text="@string/email"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmailR"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmailR" />
+
+    <TextView
+        android:id="@+id/labelPasswordR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/editTextPasswordR"
+        android:text="@string/password"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPasswordR"
+        app:layout_constraintStart_toStartOf="@+id/editTextPasswordR" />
+
+    <TextView
+        android:id="@+id/labelPasswordConfirmationR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/editTextPasswordConfirmationR"
+        android:text="@string/confirm_password"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPasswordConfirmationR"
+        app:layout_constraintStart_toStartOf="@+id/editTextPasswordConfirmationR" />
 </androidx.constraintlayout.widget.ConstraintLayout>
