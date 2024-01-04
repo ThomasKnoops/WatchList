@@ -13,4 +13,8 @@
     <string name="email">Email:</string>
     <string name="password">Password:</string>
     <string name="confirm_password">Confirm Password:</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="search">Search</string>
+    <string name="rating_format">Rating: %s</string>
+    <string name="rating_count_format">Rating Count: %s</string>
 </resources>
