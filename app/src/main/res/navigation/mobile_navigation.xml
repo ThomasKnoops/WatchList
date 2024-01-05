@@ -9,7 +9,28 @@
         android:id="@+id/navigation_movies"
         android:name="org.thoteman.watchlist.ui.movies.MoviesFragment"
         android:label="@string/title_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies">
+
+        <action
+            android:id="@+id/actionMoviesFragmentToMovieInfoFragment"
+            app:destination="@id/movieInfoFragment">
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieInfoFragment"
+        android:name="org.thoteman.watchlist.ui.movies.MovieInfoFragment"
+        android:label="Movie Info"
+        tools:layout="@layout/fragment_movie_info">
+
+        <!-- Define an argument for the fragment -->
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_watchlist"
