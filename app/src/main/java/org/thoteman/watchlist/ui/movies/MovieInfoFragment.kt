@@ -17,6 +17,7 @@ class MovieInfoFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: MovieInfoViewModel
+    private lateinit var watchlistButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,17 +27,15 @@ class MovieInfoFragment : Fragment() {
         _binding = FragmentMovieInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Watchlist Button
-        val watchlistButton: Button = root.findViewById(R.id.buttonWatchlist)
+        watchlistButton = root.findViewById(R.id.buttonWatchlist)
         watchlistButton.setOnClickListener {
             val userId = FirebaseAuth.getInstance().currentUser?.uid
-            val movieId = MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId
             if (userId != null) {
-                viewModel.addToWatchList(userId, movieId)
+                viewModel.toggleWatchList(userId , MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId)
             }
         }
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,6 +45,12 @@ class MovieInfoFragment : Fragment() {
 
         viewModel = ViewModelProvider(this, MovieInfoViewModelFactory(movieId))
             .get(MovieInfoViewModel::class.java)
+
+        // Set the initial button text based on the watchlist status
+        viewModel.isInWatchlist.observe(viewLifecycleOwner) { isInWatchlist ->
+            val buttonText = if (isInWatchlist) "Remove from Watchlist" else "Add to Watchlist"
+            watchlistButton.text = buttonText
+        }
 
         observeViewModel()
     }
@@ -67,5 +72,5 @@ class MovieInfoFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
+

@@ -36,7 +36,11 @@
         android:id="@+id/navigation_watchlist"
         android:name="org.thoteman.watchlist.ui.watchlist.WatchlistFragment"
         android:label="@string/title_watchlist"
-        tools:layout="@layout/fragment_watchlist" />
+        tools:layout="@layout/fragment_watchlist" >
+        <action
+            android:id="@+id/actionWatchlistToMovieInfoFragment"
+            app:destination="@id/movieInfoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
