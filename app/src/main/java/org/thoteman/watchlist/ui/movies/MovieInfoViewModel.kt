@@ -1,6 +1,5 @@
 package org.thoteman.watchlist.ui.movies
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,9 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.thoteman.watchlist.BuildConfig
 import org.thoteman.watchlist.model.MovieInfo
-import org.thoteman.watchlist.model.Review
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
 import java.io.IOException
 
 class MovieInfoViewModel(movieId: Int) : ViewModel() {
@@ -74,8 +71,6 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
 
     // Add a movie to the watchlist
     fun addToWatchList(userId: String, movieId: Int) {
-        Log.d("Debug", "movieId: $movieId, userId: $userId")
-
         // Use FieldValue.arrayUnion to add the movieId to the existing array in the document
         val watchListUpdate = hashMapOf(
             "movieIds" to FieldValue.arrayUnion(movieId)
@@ -84,8 +79,6 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
         // Update the document with the new movieId
         db.collection("watchlists").document(userId)
             .update(watchListUpdate as Map<String, Any>)
-            .addOnSuccessListener { Log.d("debug", "Document successfully updated!") }
-            .addOnFailureListener { e -> Log.w("debug", "Error updating document", e) }
     }
 
 
