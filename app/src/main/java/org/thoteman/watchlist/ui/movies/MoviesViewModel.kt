@@ -3,6 +3,7 @@ package org.thoteman.watchlist.ui.movies
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -25,7 +26,7 @@ class MoviesViewModel : ViewModel() {
 
     init {
         // Launch a coroutine to perform the network request asynchronously
-        GlobalScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val request = Request.Builder()
                     .url("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc")
@@ -50,6 +51,33 @@ class MoviesViewModel : ViewModel() {
                     _movies.postValue(movies.results)
                 } else {
                     // Handle non-successful response (e.g., show an error message)
+                }
+            } catch (e: IOException) {
+                // Handle IO exception
+            }
+        }
+    }
+
+    fun searchMovies(query: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val request = Request.Builder()
+                    .url("https://api.themoviedb.org/3/search/movie?query=$query&include_adult=false&language=en-US&page=1")
+                    .get()
+                    .addHeader("accept", "application/json")
+                    .addHeader("Authorization", "Bearer ${BuildConfig.TMDB_API_KEY}")
+                    .build()
+
+                val response = client.newCall(request).execute()
+
+                if (response.isSuccessful) {
+                    val responseBody = response.body?.string()
+                    val gson = Gson()
+                    val movies = gson.fromJson(responseBody, MovieList::class.java)
+
+                    _movies.postValue(movies.results)
+                } else {
+                    // Handle non-successful response
                 }
             } catch (e: IOException) {
                 // Handle IO exception

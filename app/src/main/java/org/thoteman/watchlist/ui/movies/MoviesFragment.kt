@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
@@ -56,6 +58,20 @@ class MoviesFragment : Fragment() {
 
         // Set the adapter for the RecyclerView
         recyclerView.adapter = movieAdapter
+
+        // Search button and search query
+        val searchButton: Button = root.findViewById(R.id.buttonSearch)
+        val editTextSearch: EditText = root.findViewById(R.id.editTextSearch)
+
+        // Set click listener for the search button
+        searchButton.setOnClickListener {
+            val query = editTextSearch.text.toString()
+            if (query.isNotEmpty()) {
+                moviesViewModel.searchMovies(query)
+            } else {
+                // Handle empty search query if needed
+            }
+        }
 
         return root
     }
