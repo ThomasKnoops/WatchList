@@ -22,12 +22,17 @@ import java.io.IOException
 class WatchlistViewModel : ViewModel() {
 
     private val db = FirebaseFirestore.getInstance()
-    private val _movies = MutableLiveData<List<Movie>>() // Use MutableLiveData directly
+    private val _movies = MutableLiveData<List<Movie>>()
+    private var lastFetchedMovieIds: List<Int>? = null
     private val client = OkHttpClient()
 
     val movies: LiveData<List<Movie>> = _movies
 
     init {
+        refreshMovies()
+    }
+
+    fun refreshMovies() {
         // Get the current user's ID (you need to replace this with your actual logic to get the user ID)
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
@@ -40,9 +45,14 @@ class WatchlistViewModel : ViewModel() {
                     if (documentSnapshot.exists()) {
                         // Get the list of movieIds
                         val movieIds = documentSnapshot["movieIds"] as? List<Int>
-                        // Fetch movie details for each movieId
-                        if (movieIds != null) {
-                            fetchMovies(movieIds)
+
+                        // Check if the movieIds are different from the last fetched ones
+                        if (movieIds != lastFetchedMovieIds) {
+                            // Fetch movie details for each movieId
+                            if (movieIds != null) {
+                                lastFetchedMovieIds = movieIds
+                                fetchMovies(movieIds)
+                            }
                         }
                     } else {
                         Log.d("debug", "No watchlist document found for user $userId")

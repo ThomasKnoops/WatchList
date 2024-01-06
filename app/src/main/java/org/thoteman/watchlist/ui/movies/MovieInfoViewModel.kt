@@ -57,15 +57,12 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
                         // Check if movieIds is not null and contains movieId
                         if (movieIds != null) {
                             for (id in movieIds) {
-                                Log.d("debug", "Checking id: $id against movieId: $movieId")
                                 if (id == movieId) {
                                     _isInWatchlist.postValue(true)
-                                    Log.d("debug", "Is in watchlist: true")
                                     return@addOnSuccessListener
                                 }
                             }
                             _isInWatchlist.postValue(false)
-                            Log.d("debug", "Is in watchlist: false")
                         }
                     }
                 }
@@ -107,15 +104,15 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
     fun toggleWatchList(userId: String, movieId: Int) {
         val watchListUpdate: Map<String, Any>
         if (isInWatchlist.value == true) {
-            Log.d("debug", "Removing movie $movieId from watchlist")
             watchListUpdate = hashMapOf(
                 "movieIds" to FieldValue.arrayRemove(movieId)
             )
+            _isInWatchlist.postValue(false)
         } else {
-            Log.d("debug", "Adding movie $movieId to watchlist")
             watchListUpdate = hashMapOf(
                 "movieIds" to FieldValue.arrayUnion(movieId)
             )
+            _isInWatchlist.postValue(true)
         }
 
         db.collection("watchlists").document(userId)

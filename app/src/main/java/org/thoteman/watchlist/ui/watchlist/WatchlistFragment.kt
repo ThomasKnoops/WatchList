@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import org.thoteman.watchlist.R
 import org.thoteman.watchlist.databinding.FragmentWatchlistBinding
 import org.thoteman.watchlist.ui.movies.MovieAdapter
-import org.thoteman.watchlist.ui.movies.MoviesFragmentDirections
-import org.thoteman.watchlist.ui.watchlist.WatchlistFragmentDirections.Companion.actionWatchlistToMovieInfoFragment
 
 class WatchlistFragment : Fragment() {
 
@@ -25,28 +23,18 @@ class WatchlistFragment : Fragment() {
     private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentWatchlistBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        watchlistViewModel =
-            ViewModelProvider(this).get(WatchlistViewModel::class.java)
-
-
-        // Observe the movies LiveData
-        watchlistViewModel.movies.observe(viewLifecycleOwner) { movies ->
-            // Update the RecyclerView when the list of movies changes
-            movieAdapter.submitList(movies)
-        }
 
         // Setup RecyclerView
         val recyclerView: RecyclerView = root.findViewById(R.id.watchlistRecycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        // Initialize the org.thoteman.watchlist.ui.movies.MovieAdapter with an empty list (or you can pass an initial list if needed)
+        // Initialize the MovieAdapter with an empty list (or you can pass an initial list if needed)
         movieAdapter = MovieAdapter(emptyList()) { clickedMovie ->
             // Handle the click event here, e.g., navigate to MovieInfoFragment
             val movieId = clickedMovie.id
@@ -63,8 +51,27 @@ class WatchlistFragment : Fragment() {
         return root
     }
 
-    override fun onDestroyView() {
-            super.onDestroyView()
-            _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        watchlistViewModel =
+            ViewModelProvider(this).get(WatchlistViewModel::class.java)
+
+        // Observe the movies LiveData
+        watchlistViewModel.movies.observe(viewLifecycleOwner) { movies ->
+            // Update the RecyclerView when the list of movies changes
+            movieAdapter.submitList(movies)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Fetch movies explicitly when the fragment becomes visible
+        watchlistViewModel.refreshMovies()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
