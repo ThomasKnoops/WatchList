@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import com.google.firebase.auth.FirebaseAuth
+import org.thoteman.watchlist.R
 import org.thoteman.watchlist.databinding.FragmentMovieInfoBinding
 
 class MovieInfoFragment : Fragment() {
@@ -21,7 +24,19 @@ class MovieInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMovieInfoBinding.inflate(inflater, container, false)
-        return binding.root
+        val root: View = binding.root
+
+        // Watchlist Button
+        val watchlistButton: Button = root.findViewById(R.id.buttonWatchlist)
+        watchlistButton.setOnClickListener {
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            val movieId = MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId
+            if (userId != null) {
+                viewModel.addToWatchList(userId, movieId)
+            }
+        }
+
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
