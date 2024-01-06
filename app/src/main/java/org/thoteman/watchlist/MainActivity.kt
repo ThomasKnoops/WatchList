@@ -26,7 +26,7 @@ private lateinit var binding: ActivityMainBinding
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_movies, R.id.navigation_watchlist, R.id.navigation_profile))
+            R.id.navigation_movies, R.id.navigation_watchlist, R.id.navigation_logbook))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

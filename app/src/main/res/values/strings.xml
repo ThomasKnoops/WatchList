@@ -2,7 +2,7 @@
     <string name="app_name">WatchList</string>
     <string name="title_movies">Movies</string>
     <string name="title_watchlist">Watchlist</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_logbook">Logbook</string>
     <string name="login">Login</string>
     <string name="new_sign_up_now">New? Sign Up now!</string>
     <string name="sign_up">Sign Up</string>

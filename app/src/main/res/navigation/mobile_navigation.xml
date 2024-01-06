@@ -43,8 +43,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="org.thoteman.watchlist.ui.profile.ProfileFragment"
+        android:id="@+id/navigation_logbook"
+        android:name="org.thoteman.watchlist.ui.logbook.LogbookFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_logbook" />
 </navigation>
