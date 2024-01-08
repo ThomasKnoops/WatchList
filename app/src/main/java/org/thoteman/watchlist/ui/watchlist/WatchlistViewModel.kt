@@ -33,7 +33,7 @@ class WatchlistViewModel : ViewModel() {
     }
 
     fun refreshMovies() {
-        // Get the current user's ID (you need to replace this with your actual logic to get the user ID)
+        // Get the current user's ID
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         // Check if the user is logged in

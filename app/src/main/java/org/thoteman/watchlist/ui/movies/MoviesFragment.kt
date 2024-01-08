@@ -43,7 +43,7 @@ class MoviesFragment : Fragment() {
         val recyclerView: RecyclerView = root.findViewById(R.id.moviesRecycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        // Initialize the org.thoteman.watchlist.ui.movies.MovieAdapter with an empty list
+        // Initialize the MovieAdapter with an empty list
         movieAdapter = MovieAdapter(emptyList()) { clickedMovie ->
             val movieId = clickedMovie.id
 
