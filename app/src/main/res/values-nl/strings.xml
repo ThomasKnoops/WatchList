@@ -10,9 +10,9 @@
     <string name="prompt_password">Voer je wachtwoord in</string>
     <string name="action_sign_in_short">Inloggen</string>
     <string name="action_sign_in">Inloggen</string>
-    <string name="email">E-mailadres:</string>
-    <string name="password">Wachtwoord:</string>
-    <string name="confirm_password">Bevestig wachtwoord:</string>
+    <string name="email">E-mailadres</string>
+    <string name="password">Wachtwoord</string>
+    <string name="confirm_password">Bevestig wachtwoord</string>
     <string name="movie_title">Film Titel</string>
     <string name="search">Zoeken</string>
     <string name="rating_format">Beoordeling: %s</string>
@@ -33,7 +33,7 @@
     <string name="password_mismatch">Wachtwoorden komen niet overeen</string>
     <string name="the_entered_passwords_do_not_match_please_try_again">De ingegeven wachtwoorden komen niet overeen. Gelieve deze opnieuw in te geven.</string>
     <string name="remove_from_watchlist">Verwijderen van KijkLijst</string>
-    <string name="popularity">Populariteit: %1$s</string>
+    <string name="release_date">Datum publicatie: %s</string>
     <string name="loading">Laden…</string>
     <string name="runtime">Duur: %1$s</string>
     <string name="go_back">Ga terug</string>

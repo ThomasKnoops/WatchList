@@ -6,64 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".authentication.LoginActivity">
 
-    <EditText
-        android:id="@+id/editTextEmailL"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/editTextPasswordL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailL" />
+        <EditText
+            android:id="@+id/editTextEmailL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:autofillHints="" />
 
-    <Button
-        android:id="@+id/buttonLoginL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordL" />
+        <EditText
+            android:id="@+id/editTextPasswordL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:autofillHints="" />
 
-    <Button
-        android:id="@+id/buttonSignupL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/new_sign_up_now"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLoginL" />
+        <Button
+            android:id="@+id/buttonLoginL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/login" />
 
-    <TextView
-        android:id="@+id/labelEmailL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:labelFor="@id/labelEmailL"
-        app:layout_constraintBottom_toTopOf="@+id/editTextEmailL"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmailL" />
-
-    <TextView
-        android:id="@+id/labelPasswordL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/password"
-        android:labelFor="@id/labelPasswordL"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPasswordL"
-        app:layout_constraintStart_toStartOf="@+id/editTextPasswordL" />
+        <Button
+            android:id="@+id/buttonSignupL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/new_sign_up_now" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

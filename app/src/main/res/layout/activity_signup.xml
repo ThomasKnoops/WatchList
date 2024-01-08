@@ -6,85 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".authentication.SignUpActivity">
 
-
-    <EditText
-        android:id="@+id/editTextEmailR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextPasswordR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailR" />
-
-    <EditText
-        android:id="@+id/editTextPasswordConfirmationR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordR" />
-
-    <Button
-        android:id="@+id/buttonSignUpR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/sign_up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordConfirmationR" />
-
-    <TextView
-        android:id="@+id/labelEmailR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:labelFor="@id/editTextEmailR"
-        android:text="@string/email"
-        app:layout_constraintBottom_toTopOf="@+id/editTextEmailR"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmailR" />
-
-    <TextView
-        android:id="@+id/labelPasswordR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:labelFor="@id/editTextPasswordR"
-        android:text="@string/password"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPasswordR"
-        app:layout_constraintStart_toStartOf="@+id/editTextPasswordR" />
-
-    <TextView
-        android:id="@+id/labelPasswordConfirmationR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:labelFor="@id/editTextPasswordConfirmationR"
-        android:text="@string/confirm_password"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPasswordConfirmationR"
-        app:layout_constraintStart_toStartOf="@+id/editTextPasswordConfirmationR" />
-
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/go_back"
+        android:layout_marginStart="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editTextEmailR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextPasswordR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextPasswordConfirmationR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="@string/confirm_password"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/buttonSignUpR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/sign_up" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

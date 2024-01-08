@@ -38,9 +38,6 @@
             android:name="movieOverview"
             app:argType="string" />
         <argument
-            android:name="moviePopularity"
-            app:argType="float" />
-        <argument
             android:name="movieReleaseDate"
             app:argType="string" />
         <argument
