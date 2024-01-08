@@ -18,6 +18,7 @@ class MovieInfoFragment : Fragment() {
 
     private lateinit var viewModel: MovieInfoViewModel
     private lateinit var watchlistButton: Button
+    private lateinit var reviewButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +34,11 @@ class MovieInfoFragment : Fragment() {
             if (userId != null) {
                 viewModel.toggleWatchList(userId , MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId)
             }
+        }
+
+        reviewButton = root.findViewById(R.id.buttonReview)
+        reviewButton.setOnClickListener {
+            viewModel.reviewDialog(requireContext(), MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId)
         }
 
         return binding.root

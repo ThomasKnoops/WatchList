@@ -27,6 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         val passwordEditText: EditText = findViewById(R.id.editTextPasswordR)
         val confirmPasswordEditText: EditText = findViewById(R.id.editTextPasswordConfirmationR)
         val signUpButton: Button = findViewById(R.id.buttonSignUpR)
+        val backButton: Button = findViewById(R.id.buttonBack)
 
         signUpButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -52,6 +53,11 @@ class SignUpActivity : AppCompatActivity() {
                 // Call the function to sign up the user
                 signUpUser(email, password)
             }
+        }
+
+        backButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

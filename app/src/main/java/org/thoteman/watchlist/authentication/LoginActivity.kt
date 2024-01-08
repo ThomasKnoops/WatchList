@@ -29,12 +29,10 @@ class LoginActivity : AppCompatActivity() {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            // Call the function to log in the user
             loginUser(email, password)
         }
 
         signUpButton.setOnClickListener {
-            // When the Sign Up button is clicked, navigate to SignUpActivity
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }

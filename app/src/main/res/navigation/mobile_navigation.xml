@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/movieInfoFragment"
         android:name="org.thoteman.watchlist.ui.movies.MovieInfoFragment"
-        android:label="Movie Info"
+        android:label="@string/movie_info"
         tools:layout="@layout/fragment_movie_info">
 
         <!-- Define an argument for the fragment -->

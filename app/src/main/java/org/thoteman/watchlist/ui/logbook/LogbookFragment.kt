@@ -27,10 +27,6 @@ private var _binding: FragmentLogbookBinding? = null
     _binding = FragmentLogbookBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val textView: TextView = binding.textLogbook
-    logbookViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
-    }
     return root
   }
 
