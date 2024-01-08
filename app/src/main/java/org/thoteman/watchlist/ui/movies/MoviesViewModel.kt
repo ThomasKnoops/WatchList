@@ -25,40 +25,42 @@ class MoviesViewModel : ViewModel() {
     private val client = OkHttpClient()
 
     init {
+        loadMovies()
+    }
+
+    fun loadMovies() {
         // Launch a coroutine to perform the network request asynchronously
         viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val request = Request.Builder()
-                    .url("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc")
-                    .get()
-                    .addHeader("accept", "application/json")
-                    .addHeader("Authorization", "Bearer ${BuildConfig.TMDB_API_KEY}")
-                    .build()
+            val allMovies = mutableListOf<Movie>()
 
-                val response = client.newCall(request).execute()
+            for (i in 1..5) {
+                try {
+                    val request = Request.Builder()
+                        .url("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=$i&sort_by=popularity.desc")
+                        .get()
+                        .addHeader("accept", "application/json")
+                        .addHeader("Authorization", "Bearer ${BuildConfig.TMDB_API_KEY}")
+                        .build()
 
-                // Check if the response is successful
-                if (response.isSuccessful) {
-                    // Get the response body as a string
-                    val responseBody = response.body?.string()
+                    val response = client.newCall(request).execute()
 
-                    // Use Gson to parse the JSON string into a list of Movie objects
-                    val gson = Gson()
-                    val movies = gson.fromJson(responseBody, MovieList::class.java)
+                    if (response.isSuccessful) {
+                        val responseBody = response.body?.string()
+                        val gson = Gson()
+                        val movies = gson.fromJson(responseBody, MovieList::class.java)
 
-                    // Now, you have the list of Movie objects
-                    // You can update LiveData or perform any other actions with the movies
-                    _movies.postValue(movies.results)
-                } else {
-                    // Handle non-successful response (e.g., show an error message)
+                        allMovies.addAll(movies.results)
+                    }
+                } catch (e: IOException) {
+                    // Handle IO exception
                 }
-            } catch (e: IOException) {
-                // Handle IO exception
             }
+            _movies.postValue(allMovies)
         }
     }
 
     fun searchMovies(query: String) {
+        // Launch a coroutine to perform the network request asynchronously
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val request = Request.Builder()
@@ -76,8 +78,6 @@ class MoviesViewModel : ViewModel() {
                     val movies = gson.fromJson(responseBody, MovieList::class.java)
 
                     _movies.postValue(movies.results)
-                } else {
-                    // Handle non-successful response
                 }
             } catch (e: IOException) {
                 // Handle IO exception

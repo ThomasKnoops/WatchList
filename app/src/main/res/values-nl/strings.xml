@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">WatchList</string>
+    <string name="title_movies">Films</string>
+    <string name="title_watchlist">KijkLijst</string>
+    <string name="title_logbook">Logboek</string>
+    <string name="login">Inloggen</string>
+    <string name="new_sign_up_now">Nieuw? Meld je nu aan!</string>
+    <string name="sign_up">Aanmelden</string>
+    <string name="prompt_email">Voer je e-mailadres in</string>
+    <string name="prompt_password">Voer je wachtwoord in</string>
+    <string name="action_sign_in_short">Inloggen</string>
+    <string name="action_sign_in">Inloggen</string>
+    <string name="email">E-mailadres:</string>
+    <string name="password">Wachtwoord:</string>
+    <string name="confirm_password">Bevestig wachtwoord:</string>
+    <string name="movie_title">Film Titel</string>
+    <string name="search">Zoeken</string>
+    <string name="rating_format">Beoordeling: %s</string>
+    <string name="rating_count_format">Aantal beoordelingen: %s</string>
+    <string name="review_movie">Film beoordelen</string>
+    <string name="add_to_watchlist">Toevoegen aan KijkLijst</string>
+    <string name="refresh">Vernieuwen</string>
+    <string name="english_nederlands">English/Nederlands</string>
+</resources>

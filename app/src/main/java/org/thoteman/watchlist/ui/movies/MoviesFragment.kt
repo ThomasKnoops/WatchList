@@ -36,7 +36,6 @@ class MoviesFragment : Fragment() {
 
         // Observe the movies LiveData
         moviesViewModel.movies.observe(viewLifecycleOwner) { movies ->
-            // Update the RecyclerView when the list of movies changes
             movieAdapter.submitList(movies)
         }
 
@@ -44,13 +43,10 @@ class MoviesFragment : Fragment() {
         val recyclerView: RecyclerView = root.findViewById(R.id.moviesRecycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        // Initialize the org.thoteman.watchlist.ui.movies.MovieAdapter with an empty list (or you can pass an initial list if needed)
+        // Initialize the org.thoteman.watchlist.ui.movies.MovieAdapter with an empty list
         movieAdapter = MovieAdapter(emptyList()) { clickedMovie ->
-            // Handle the click event here, e.g., navigate to MovieInfoFragment
             val movieId = clickedMovie.id
 
-            // Use findNavController() to get the correct NavController
-            // Specify the type explicitly
             val action: NavDirections = MoviesFragmentDirections.actionMoviesFragmentToMovieInfoFragment(movieId)
             findNavController().navigate(action)
 
@@ -59,18 +55,21 @@ class MoviesFragment : Fragment() {
         // Set the adapter for the RecyclerView
         recyclerView.adapter = movieAdapter
 
-        // Search button and search query
+        // Search button, Refresh button and search query
         val searchButton: Button = root.findViewById(R.id.buttonSearch)
+        val refreshButton: Button = root.findViewById(R.id.buttonRefresh)
         val editTextSearch: EditText = root.findViewById(R.id.editTextSearch)
 
-        // Set click listener for the search button
+        // Set click listener for the buttons
         searchButton.setOnClickListener {
             val query = editTextSearch.text.toString()
             if (query.isNotEmpty()) {
                 moviesViewModel.searchMovies(query)
-            } else {
-                // Handle empty search query if needed
             }
+        }
+        refreshButton.setOnClickListener {
+            moviesViewModel.loadMovies()
+            editTextSearch.setText(resources.getString(R.string.movie_title))
         }
 
         return root

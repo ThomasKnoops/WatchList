@@ -19,4 +19,6 @@
     <string name="rating_count_format">Rating Count: %s</string>
     <string name="review_movie">Review Movie</string>
     <string name="add_to_watchlist">Add to WatchList</string>
+    <string name="refresh">Refresh</string>
+    <string name="english_nederlands">English/Nederlands</string>
 </resources>

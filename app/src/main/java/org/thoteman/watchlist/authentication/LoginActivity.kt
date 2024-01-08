@@ -1,12 +1,12 @@
 package org.thoteman.watchlist.authentication
 
 import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import org.thoteman.watchlist.MainActivity
 import org.thoteman.watchlist.R
