@@ -48,7 +48,7 @@ class MovieInfoFragment : Fragment() {
 
         // Set the initial button text based on the watchlist status
         viewModel.isInWatchlist.observe(viewLifecycleOwner) { isInWatchlist ->
-            val buttonText = if (isInWatchlist) "Remove from Watchlist" else "Add to Watchlist"
+            val buttonText = if (isInWatchlist) getString(R.string.remove_from_watchlist) else getString(R.string.add_to_watchlist)
             watchlistButton.text = buttonText
         }
 
@@ -61,10 +61,10 @@ class MovieInfoFragment : Fragment() {
             binding.textViewTitle.text = movieInfo.title
             binding.textViewTagline.text = movieInfo.tagline
             binding.textViewOverview.text = movieInfo.overview
-            binding.textViewPopularity.text = "Popularity: ${movieInfo.popularity.toString()}"
-            binding.textViewDuration.text = "Runtime: ${movieInfo.runtime.toString()}"
-            binding.textViewVoteAverage.text = "Rating: ${movieInfo.vote_average.toString()}"
-            binding.textViewVoteCount.text = "Rating Count: ${movieInfo.vote_count.toString()}"
+            binding.textViewPopularity.text = getString(R.string.popularity, movieInfo.popularity.toString())
+            binding.textViewDuration.text = getString(R.string.runtime, movieInfo.runtime.toString())
+            binding.textViewVoteAverage.text = getString(R.string.rating_format, movieInfo.vote_average.toString())
+            binding.textViewVoteCount.text = getString(R.string.rating_count_format, movieInfo.vote_count.toString())
         }
     }
 

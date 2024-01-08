@@ -51,16 +51,16 @@ class LoginActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     // You can handle specific login failure cases here.
-                    showAlert("Login Failed", "Please try again.")
+                    showAlert()
                 }
             }
     }
 
-    private fun showAlert(title: String, message: String) {
+    private fun showAlert() {
         val alertDialogBuilder = AlertDialog.Builder(this)
-        alertDialogBuilder.setTitle(title)
-        alertDialogBuilder.setMessage(message)
-        alertDialogBuilder.setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+        alertDialogBuilder.setTitle(R.string.login_failed)
+        alertDialogBuilder.setMessage(R.string.try_again)
+        alertDialogBuilder.setPositiveButton(R.string.ok) { dialogInterface: DialogInterface, _: Int ->
             // Dismiss the alert dialog if the user clicks OK
             dialogInterface.dismiss()
         }

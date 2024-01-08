@@ -55,14 +55,10 @@ class WatchlistViewModel : ViewModel() {
                             }
                         }
                     } else {
-                        Log.d("debug", "No watchlist document found for user $userId")
-                        // Update LiveData with an empty list if no watchlist document is found
                         _movies.postValue(emptyList())
                     }
                 }
                 .addOnFailureListener { e ->
-                    Log.w("debug", "Error getting watchlist document", e)
-                    // Update LiveData with an empty list in case of failure
                     _movies.postValue(emptyList())
                 }
         }
@@ -105,8 +101,6 @@ class WatchlistViewModel : ViewModel() {
 
                         // Add the movie to the list
                         moviesList.add(movie)
-                    } else {
-                        // Handle non-successful response (e.g., show an error message)
                     }
                 } catch (e: IOException) {
                     // Handle IO exception

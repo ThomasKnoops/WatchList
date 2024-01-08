@@ -21,4 +21,19 @@
     <string name="add_to_watchlist">Add to WatchList</string>
     <string name="refresh">Refresh</string>
     <string name="english_nederlands">English/Nederlands</string>
+    <string name="login_failed">Login failed</string>
+    <string name="try_again">Please try again.</string>
+    <string name="ok">OK</string>
+    <string name="empty_fields">Empty Fields</string>
+    <string name="please_fill_in_all_the_fields">Please fill in all the fields.</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="please_enter_a_valid_email_address">Please enter a valid email address.</string>
+    <string name="invalid_password">Invalid Password</string>
+    <string name="please_enter_a_password_with_at_least_6_characters">Please enter a password with at least 6 characters.</string>
+    <string name="password_mismatch">Password Mismatch</string>
+    <string name="the_entered_passwords_do_not_match_please_try_again">The entered passwords do not match. Please try again.</string>
+    <string name="remove_from_watchlist">Remove from Watchlist</string>
+    <string name="popularity">Popularity: %1$s</string>
+    <string name="loading">Loading…</string>
+    <string name="runtime">Runtime: %1$s</string>
 </resources>

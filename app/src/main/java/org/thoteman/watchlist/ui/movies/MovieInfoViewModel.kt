@@ -1,6 +1,5 @@
 package org.thoteman.watchlist.ui.movies
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,13 +14,14 @@ import okhttp3.Request
 import org.thoteman.watchlist.BuildConfig
 import org.thoteman.watchlist.model.MovieInfo
 import com.google.firebase.firestore.FirebaseFirestore
+import org.thoteman.watchlist.R
 import java.io.IOException
 
 class MovieInfoViewModel(movieId: Int) : ViewModel() {
     private val _movie = MutableLiveData<MovieInfo>().apply {
         value = MovieInfo(
             id = movieId,
-            title = "Loading...",
+            title = R.string.loading.toString(),
             tagline = "",
             overview = "",
             popularity = 0.0f,

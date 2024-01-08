@@ -34,16 +34,20 @@ class SignUpActivity : AppCompatActivity() {
             val confirmPassword = confirmPasswordEditText.text.toString()
             if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 // If any of the fields are empty, display a message to the user
-                showAlert("Empty Fields", "Please fill in all the fields.")
+                showAlert(getString(R.string.empty_fields),
+                    getString(R.string.please_fill_in_all_the_fields))
             } else if (!isValidEmail(email)) {
                 // If the email is not in a valid format, display a message to the user
-                showAlert("Invalid Email", "Please enter a valid email address.")
+                showAlert(getString(R.string.invalid_email),
+                    getString(R.string.please_enter_a_valid_email_address))
             } else if (password.length < 6) {
                 // If the password is less than 6 characters, display a message to the user
-                showAlert("Invalid Password", "Please enter a password with at least 6 characters.")
+                showAlert(getString(R.string.invalid_password),
+                    getString(R.string.please_enter_a_password_with_at_least_6_characters))
             }else if (password != confirmPassword) {
                 // If the passwords don't match, display a message to the user
-                showAlert("Password Mismatch", "The entered passwords do not match. Please try again.")
+                showAlert(getString(R.string.password_mismatch),
+                    getString(R.string.the_entered_passwords_do_not_match_please_try_again))
             } else {
                 // Call the function to sign up the user
                 signUpUser(email, password)
@@ -62,7 +66,7 @@ class SignUpActivity : AppCompatActivity() {
                 } else {
                     // If sign up fails, display a message to the user.
                     // You can handle specific sign-up failure cases here.
-                    showAlert("Sign Up Failed", "Please try again.")
+                    showAlert(getString(R.string.login_failed), getString(R.string.try_again))
                 }
             }
     }
@@ -71,7 +75,7 @@ class SignUpActivity : AppCompatActivity() {
         val alertDialogBuilder = AlertDialog.Builder(this)
         alertDialogBuilder.setTitle(title)
         alertDialogBuilder.setMessage(message)
-        alertDialogBuilder.setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+        alertDialogBuilder.setPositiveButton(R.string.ok) { dialogInterface: DialogInterface, _: Int ->
             // Dismiss the alert dialog if the user clicks OK
             dialogInterface.dismiss()
         }
