@@ -35,7 +35,7 @@
     <string name="remove_from_watchlist">Verwijderen van KijkLijst</string>
     <string name="release_date">Datum publicatie: %s</string>
     <string name="loading">Laden…</string>
-    <string name="runtime">Duur: %1$s</string>
+    <string name="runtime">Duur: %s minuten</string>
     <string name="go_back">Ga terug</string>
     <string name="a_score_from_0_to_10">Een score tussen 0 en 10</string>
     <string name="write_a_review">Schrijf een review</string>
