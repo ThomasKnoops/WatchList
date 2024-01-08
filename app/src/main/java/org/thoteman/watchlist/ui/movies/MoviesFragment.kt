@@ -75,7 +75,7 @@ class MoviesFragment : Fragment() {
         }
         refreshButton.setOnClickListener {
             moviesViewModel.loadMovies()
-            editTextSearch.setText(resources.getString(R.string.movie_title))
+            editTextSearch.setText("")
         }
 
         return root

@@ -23,18 +23,21 @@
             android:layout_weight="3"
             android:ems="10"
             android:inputType="text"
-            android:hint="@string/movie_title" />
+            android:hint="@string/movie_title"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/buttonSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
             android:text="@string/search" />
 
         <Button
             android:id="@+id/buttonRefresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
             android:text="@string/refresh" />
     </LinearLayout>
 
