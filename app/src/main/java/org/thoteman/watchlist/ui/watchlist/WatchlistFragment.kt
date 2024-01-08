@@ -34,14 +34,12 @@ class WatchlistFragment : Fragment() {
         val recyclerView: RecyclerView = root.findViewById(R.id.watchlistRecycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        // Initialize the MovieAdapter with an empty list (or you can pass an initial list if needed)
+        // Initialize the MovieAdapter with an empty list
         movieAdapter = MovieAdapter(emptyList()) { clickedMovie ->
-            // Handle the click event here, e.g., navigate to MovieInfoFragment
             val movieId = clickedMovie.id
+            val movieTitle = clickedMovie.title
 
-            // Use findNavController() to get the correct NavController
-            // Specify the type explicitly
-            val action: NavDirections = WatchlistFragmentDirections.actionWatchlistToMovieInfoFragment(movieId)
+            val action: NavDirections = WatchlistFragmentDirections.actionWatchlistToMovieInfoFragment(movieId, movieTitle)
             findNavController().navigate(action)
         }
 

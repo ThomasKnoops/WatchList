@@ -72,8 +72,13 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
                             }
                             _isInWatchlist.postValue(false)
                         }
-                    }
+                    } else {
+                        db.collection("watchlists").document(userId)
+                            .set(hashMapOf("movieIds" to emptyList<Int>()))
+                        _isInWatchlist.postValue(false)
                 }
+
+            }
         }
         // Use viewModelScope to launch the coroutine
         viewModelScope.launch(Dispatchers.IO) {
@@ -127,7 +132,7 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
             .update(watchListUpdate as Map<String, Any>)
     }
 
-    private fun saveReview(movieId: Int, score: Int, review: String) {
+    private fun saveReview(movieId: Int, movieTitle: String, score: Int, review: String) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
         // Remove from watchlist
         val watchListUpdate: Map<String, Any>
@@ -141,12 +146,12 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
         }
         // Add review
         val reviewDocumentPath = "/${userId}_$movieId"
-        val newReview = MovieReview(userId, movieId, score, review)
+        val newReview = MovieReview(userId, movieId, movieTitle, score, review)
         db.collection("reviews").document(reviewDocumentPath)
             .set(newReview)
     }
 
-    fun reviewDialog(context: Context, movieId: Int) {
+    fun reviewDialog(context: Context, movieId: Int, movieTitle: String) {
         val inputLayout = LinearLayout(context)
         inputLayout.orientation = LinearLayout.VERTICAL
 
@@ -178,7 +183,7 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
             if (scoreEditText.text.toString().toInt() > 10)
                 scoreEditText.setText(context.getString(R.string._10))
 
-            saveReview(movieId, scoreEditText.text.toString().toInt(), reviewEditText.text.toString())
+            saveReview(movieId, movieTitle, scoreEditText.text.toString().toInt(), reviewEditText.text.toString())
 
             // Dismiss the alert dialog
             dialogInterface.dismiss()

@@ -38,7 +38,7 @@ class LogbookFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
         // Initialize the LogbookAdapter with an empty list
-        logbookAdapter = LogbookAdapter(emptyList())
+        logbookAdapter = LogbookAdapter(requireContext(), emptyList())
 
         // Set the adapter for the RecyclerView
         recyclerView.adapter = logbookAdapter

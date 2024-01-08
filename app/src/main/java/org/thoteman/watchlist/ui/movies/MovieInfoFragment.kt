@@ -38,7 +38,7 @@ class MovieInfoFragment : Fragment() {
 
         reviewButton = root.findViewById(R.id.buttonReview)
         reviewButton.setOnClickListener {
-            viewModel.reviewDialog(requireContext(), MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId)
+            viewModel.reviewDialog(requireContext(), MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieTitle)
         }
 
         return binding.root

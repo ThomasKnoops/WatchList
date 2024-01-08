@@ -42,4 +42,5 @@
     <string name="cancel">Cancel</string>
     <string name="_10">10</string>
     <string name="movie_info">Movie Information</string>
+    <string name="your_score">Your Score: %1$s / 10</string>
 </resources>

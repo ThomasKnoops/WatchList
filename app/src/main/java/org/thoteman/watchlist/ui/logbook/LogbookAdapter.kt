@@ -1,5 +1,6 @@
 package org.thoteman.watchlist.ui.logbook
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.thoteman.watchlist.R
 import org.thoteman.watchlist.model.MovieReview
 
-class LogbookAdapter(private val reviews: List<MovieReview>) : ListAdapter<MovieReview, LogbookAdapter.LogbookViewHolder>(
+class LogbookAdapter(private val context: Context, private val reviews: List<MovieReview>) : ListAdapter<MovieReview, LogbookAdapter.LogbookViewHolder>(
     LogbookDiffCallback()
 ){
     class LogbookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,8 +28,8 @@ class LogbookAdapter(private val reviews: List<MovieReview>) : ListAdapter<Movie
 
     override fun onBindViewHolder(holder: LogbookViewHolder, position: Int) {
         val review = getItem(position)
-        holder.titleTextView.text = review.movieId.toString()
-        holder.scoreTextView.text = review.score.toString()
+        holder.titleTextView.text = review.movieTitle
+        holder.scoreTextView.text = context.getString(R.string.your_score, review.score.toString())
         holder.reviewTextView.text = review.reviewText
     }
 }

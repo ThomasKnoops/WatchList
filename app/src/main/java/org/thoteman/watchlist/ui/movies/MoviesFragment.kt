@@ -46,8 +46,9 @@ class MoviesFragment : Fragment() {
         // Initialize the MovieAdapter with an empty list
         movieAdapter = MovieAdapter(emptyList()) { clickedMovie ->
             val movieId = clickedMovie.id
+            val movieTitle = clickedMovie.title
 
-            val action: NavDirections = MoviesFragmentDirections.actionMoviesFragmentToMovieInfoFragment(movieId)
+            val action: NavDirections = MoviesFragmentDirections.actionMoviesFragmentToMovieInfoFragment(movieId, movieTitle)
             findNavController().navigate(action)
 
         }
