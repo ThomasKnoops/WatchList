@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import org.thoteman.watchlist.R
-import org.thoteman.watchlist.model.Movie
+import org.thoteman.watchlist.model.MovieInfo
 
-class MovieAdapter(private val movies: List<Movie>, private val onItemClickListener: (Movie) -> Unit) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(
+class MovieAdapter(private val movies: List<MovieInfo>, private val onItemClickListener: (MovieInfo) -> Unit) : ListAdapter<MovieInfo, MovieAdapter.MovieViewHolder>(
     MovieDiffCallback()
 ) {
 
@@ -39,12 +39,12 @@ class MovieAdapter(private val movies: List<Movie>, private val onItemClickListe
     }
 }
 
-class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
-    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+class MovieDiffCallback : DiffUtil.ItemCallback<MovieInfo>() {
+    override fun areItemsTheSame(oldItem: MovieInfo, newItem: MovieInfo): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+    override fun areContentsTheSame(oldItem: MovieInfo, newItem: MovieInfo): Boolean {
         return oldItem == newItem
     }
 }

@@ -58,20 +58,14 @@ class MovieInfoFragment : Fragment() {
             watchlistButton.text = buttonText
         }
 
-        observeViewModel()
-    }
-
-    private fun observeViewModel() {
-        viewModel.movie.observe(viewLifecycleOwner) { movieInfo ->
-            // Update UI components using the movieInfo data
-            binding.textViewTitle.text = movieInfo.title
-            binding.textViewTagline.text = movieInfo.tagline
-            binding.textViewOverview.text = movieInfo.overview
-            binding.textViewPopularity.text = getString(R.string.popularity, movieInfo.popularity.toString())
-            binding.textViewDuration.text = getString(R.string.runtime, movieInfo.runtime.toString())
-            binding.textViewVoteAverage.text = getString(R.string.rating_format, movieInfo.vote_average.toString())
-            binding.textViewVoteCount.text = getString(R.string.rating_count_format, movieInfo.vote_count.toString())
-        }
+        // Set all the information
+        binding.textViewTitle.text = MovieInfoFragmentArgs.fromBundle(requireArguments()).movieTitle
+        binding.textViewTagline.text = MovieInfoFragmentArgs.fromBundle(requireArguments()).movieTagline
+        binding.textViewOverview.text = MovieInfoFragmentArgs.fromBundle(requireArguments()).movieOverview
+        binding.textViewPopularity.text = getString(R.string.popularity, MovieInfoFragmentArgs.fromBundle(requireArguments()).moviePopularity.toString())
+        binding.textViewDuration.text = getString(R.string.runtime, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieRuntime.toString())
+        binding.textViewVoteAverage.text = getString(R.string.rating_format, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieVoteAverage.toString())
+        binding.textViewVoteCount.text = getString(R.string.rating_count_format, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieVoteCount.toString())
     }
 
     override fun onDestroyView() {

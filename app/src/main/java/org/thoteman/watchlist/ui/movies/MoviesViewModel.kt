@@ -5,22 +5,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.thoteman.watchlist.BuildConfig
 import java.io.IOException
 import com.google.gson.Gson
-import org.thoteman.watchlist.model.Movie
+import org.thoteman.watchlist.model.MovieInfo
 import org.thoteman.watchlist.model.MovieList
 
 class MoviesViewModel : ViewModel() {
 
-    private val _movies = MutableLiveData<List<Movie>>().apply {
+    private val _movies = MutableLiveData<List<MovieInfo>>().apply {
         value = emptyList() // Initial value while the request is being made
     }
-    val movies: LiveData<List<Movie>> = _movies
+    val movies: LiveData<List<MovieInfo>> = _movies
 
     private val client = OkHttpClient()
 
@@ -31,7 +30,7 @@ class MoviesViewModel : ViewModel() {
     fun loadMovies() {
         // Launch a coroutine to perform the network request asynchronously
         viewModelScope.launch(Dispatchers.IO) {
-            val allMovies = mutableListOf<Movie>()
+            val allMovies = mutableListOf<MovieInfo>()
 
             for (i in 1..5) {
                 try {

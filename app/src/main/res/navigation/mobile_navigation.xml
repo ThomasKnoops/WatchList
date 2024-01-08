@@ -31,7 +31,27 @@
         <argument
             android:name="movieTitle"
             app:argType="string" />
-
+        <argument
+            android:name="movieTagline"
+            app:argType="string" />
+        <argument
+            android:name="movieOverview"
+            app:argType="string" />
+        <argument
+            android:name="moviePopularity"
+            app:argType="float" />
+        <argument
+            android:name="movieReleaseDate"
+            app:argType="string" />
+        <argument
+            android:name="movieRuntime"
+            app:argType="integer" />
+        <argument
+            android:name="movieVoteAverage"
+            app:argType="float" />
+        <argument
+            android:name="movieVoteCount"
+            app:argType="integer" />
     </fragment>
 
 

@@ -1,6 +1,5 @@
 package org.thoteman.watchlist.ui.watchlist
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,18 +14,17 @@ import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.thoteman.watchlist.BuildConfig
-import org.thoteman.watchlist.model.Movie
 import org.thoteman.watchlist.model.MovieInfo
 import java.io.IOException
 
 class WatchlistViewModel : ViewModel() {
 
     private val db = FirebaseFirestore.getInstance()
-    private val _movies = MutableLiveData<List<Movie>>()
+    private val _movies = MutableLiveData<List<MovieInfo>>()
     private var lastFetchedMovieIds: List<Int>? = null
     private val client = OkHttpClient()
 
-    val movies: LiveData<List<Movie>> = _movies
+    val movies: LiveData<List<MovieInfo>> = _movies
 
     init {
         refreshMovies()
@@ -73,9 +71,9 @@ class WatchlistViewModel : ViewModel() {
         }
     }
 
-    private suspend fun fetchMoviesApi(movieIds: List<Int>): List<Movie> {
+    private suspend fun fetchMoviesApi(movieIds: List<Int>): List<MovieInfo> {
         // Create a list to store Movie objects
-        val moviesList = mutableListOf<Movie>()
+        val moviesList = mutableListOf<MovieInfo>()
 
         // Use async to perform asynchronous calls and gather the results
         val deferredMovies = movieIds.map { movieId ->
@@ -97,7 +95,7 @@ class WatchlistViewModel : ViewModel() {
 
                         // Use Gson to parse the JSON string into a Movie object
                         val gson = Gson()
-                        val movie = gson.fromJson(responseBody, Movie::class.java)
+                        val movie = gson.fromJson(responseBody, MovieInfo::class.java)
 
                         // Add the movie to the list
                         moviesList.add(movie)

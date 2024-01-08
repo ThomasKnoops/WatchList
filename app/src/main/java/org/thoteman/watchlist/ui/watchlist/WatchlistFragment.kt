@@ -36,10 +36,16 @@ class WatchlistFragment : Fragment() {
 
         // Initialize the MovieAdapter with an empty list
         movieAdapter = MovieAdapter(emptyList()) { clickedMovie ->
-            val movieId = clickedMovie.id
-            val movieTitle = clickedMovie.title
-
-            val action: NavDirections = WatchlistFragmentDirections.actionWatchlistToMovieInfoFragment(movieId, movieTitle)
+            val action: NavDirections = WatchlistFragmentDirections.actionWatchlistToMovieInfoFragment(
+                clickedMovie.id,
+                clickedMovie.title,
+                clickedMovie.tagline,
+                clickedMovie.overview,
+                clickedMovie.popularity,
+                clickedMovie.release_date,
+                clickedMovie.runtime,
+                clickedMovie.vote_average,
+                clickedMovie.vote_count)
             findNavController().navigate(action)
         }
 

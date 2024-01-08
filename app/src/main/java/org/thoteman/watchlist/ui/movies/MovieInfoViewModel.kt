@@ -26,26 +26,11 @@ import org.thoteman.watchlist.model.MovieReview
 import java.io.IOException
 
 class MovieInfoViewModel(movieId: Int) : ViewModel() {
-    private val _movie = MutableLiveData<MovieInfo>().apply {
-        value = MovieInfo(
-            id = movieId,
-            title = R.string.loading.toString(),
-            tagline = "",
-            overview = "",
-            popularity = 0.0f,
-            release_date = "",
-            runtime = 0,
-            vote_average = 0.0f,
-            vote_count = 0
-        )
-    }
-    val movie: LiveData<MovieInfo> = _movie
+
     private val _isInWatchlist = MutableLiveData<Boolean>().apply {
         value = false
     }
     val isInWatchlist: LiveData<Boolean> = _isInWatchlist
-
-    private val client = OkHttpClient()
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -78,37 +63,6 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
                         _isInWatchlist.postValue(false)
                 }
 
-            }
-        }
-        // Use viewModelScope to launch the coroutine
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val request = Request.Builder()
-                    .url("https://api.themoviedb.org/3/movie/${movieId}?language=en-US")
-                    .get()
-                    .addHeader("accept", "application/json")
-                    .addHeader("Authorization", "Bearer ${BuildConfig.TMDB_API_KEY}")
-                    .build()
-
-                val response = client.newCall(request).execute()
-
-                // Check if the response is successful
-                if (response.isSuccessful) {
-                    // Get the response body as a string
-                    val responseBody = response.body?.string()
-
-                    // Use Gson to parse the JSON string into a list of Movie objects
-                    val gson = Gson()
-                    val movie = gson.fromJson(responseBody, MovieInfo::class.java)
-
-                    // Now, you have the list of Movie objects
-                    // You can update LiveData or perform any other actions with the movies
-                    _movie.postValue(movie)
-                } else {
-                    // Handle non-successful response (e.g., show an error message)
-                }
-            } catch (e: IOException) {
-                // Handle IO exception
             }
         }
     }
