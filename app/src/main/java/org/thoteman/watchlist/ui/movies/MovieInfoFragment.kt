@@ -62,7 +62,7 @@ class MovieInfoFragment : Fragment() {
         binding.textViewTitle.text = MovieInfoFragmentArgs.fromBundle(requireArguments()).movieTitle
         binding.textViewTagline.text = MovieInfoFragmentArgs.fromBundle(requireArguments()).movieTagline
         binding.textViewOverview.text = MovieInfoFragmentArgs.fromBundle(requireArguments()).movieOverview
-        binding.textViewPopularity.text = getString(R.string.popularity, MovieInfoFragmentArgs.fromBundle(requireArguments()).moviePopularity.toString())
+        binding.textViewPopularity.text = getString(R.string.release_date, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieReleaseDate)
         binding.textViewDuration.text = getString(R.string.runtime, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieRuntime.toString())
         binding.textViewVoteAverage.text = getString(R.string.rating_format, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieVoteAverage.toString())
         binding.textViewVoteCount.text = getString(R.string.rating_count_format, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieVoteCount.toString())

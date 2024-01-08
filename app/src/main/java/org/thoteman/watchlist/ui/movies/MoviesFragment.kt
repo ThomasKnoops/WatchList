@@ -50,7 +50,6 @@ class MoviesFragment : Fragment() {
                 clickedMovie.title,
                 clickedMovie.tagline,
                 clickedMovie.overview,
-                clickedMovie.popularity,
                 clickedMovie.release_date,
                 clickedMovie.runtime,
                 clickedMovie.vote_average,
