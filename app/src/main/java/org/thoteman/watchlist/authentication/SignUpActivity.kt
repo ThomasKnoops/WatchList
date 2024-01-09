@@ -65,13 +65,12 @@ class SignUpActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign up successful, navigate to the main activity or any desired screen
+                    // Sign up successful
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
                     // If sign up fails, display a message to the user.
-                    // You can handle specific sign-up failure cases here.
                     showAlert(getString(R.string.login_failed), getString(R.string.try_again))
                 }
             }
