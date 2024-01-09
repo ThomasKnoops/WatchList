@@ -46,12 +46,6 @@
             android:layout_marginTop="16dp" >
 
             <TextView
-                android:id="@+id/textViewDuration"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-
-            <TextView
                 android:id="@+id/textViewPopularity"
                 android:layout_width="0dp"
                 android:layout_weight="1"

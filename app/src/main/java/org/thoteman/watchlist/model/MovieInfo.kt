@@ -6,7 +6,6 @@ data class MovieInfo(
     val tagline: String = "",
     val overview: String = "",
     val release_date: String = "",
-    val runtime: Int = 0,
     val vote_average: Float = 0.toFloat(),
     val vote_count: Int = 0
 )

@@ -42,7 +42,6 @@ class WatchlistFragment : Fragment() {
                 clickedMovie.tagline,
                 clickedMovie.overview,
                 clickedMovie.release_date,
-                clickedMovie.runtime,
                 clickedMovie.vote_average,
                 clickedMovie.vote_count)
             findNavController().navigate(action)
