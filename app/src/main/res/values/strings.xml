@@ -35,12 +35,13 @@
     <string name="remove_from_watchlist">Remove from Watchlist</string>
     <string name="release_date">Release date: %s</string>
     <string name="loading">Loading…</string>
-    <string name="runtime">Runtime: %s minutes</string>
+    <string name="runtime">Runtime: %s</string>
     <string name="go_back">Go back</string>
     <string name="a_score_from_0_to_10">A score from 0 to 10</string>
     <string name="write_a_review">Write a review</string>
     <string name="cancel">Cancel</string>
     <string name="_10">10</string>
     <string name="movie_info">Movie Information</string>
-    <string name="your_score">Your Score: %1$s / 10</string>
+    <string name="your_score">Score: %1$s / 10</string>
+    <string name="reviews">Reviews:</string>
 </resources>

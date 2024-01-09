@@ -18,7 +18,7 @@ class LogbookViewModel : ViewModel() {
         updateReviews()
     }
 
-    // Function to update reviews (you will call this with actual data from Firestore)
+    // Function to update reviews
     fun updateReviews() {
         // Get the current user's ID
         val userId = FirebaseAuth.getInstance().currentUser?.uid

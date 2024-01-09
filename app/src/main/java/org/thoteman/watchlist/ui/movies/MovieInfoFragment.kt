@@ -2,14 +2,19 @@ package org.thoteman.watchlist.ui.movies
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import org.thoteman.watchlist.R
 import org.thoteman.watchlist.databinding.FragmentMovieInfoBinding
+import org.thoteman.watchlist.ui.logbook.LogbookAdapter
+import org.thoteman.watchlist.ui.logbook.LogbookViewModel
 
 class MovieInfoFragment : Fragment() {
 
@@ -17,6 +22,7 @@ class MovieInfoFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: MovieInfoViewModel
+    private lateinit var reviewAdapter: LogbookAdapter
     private lateinit var watchlistButton: Button
     private lateinit var reviewButton: Button
 
@@ -27,6 +33,9 @@ class MovieInfoFragment : Fragment() {
     ): View {
         _binding = FragmentMovieInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        viewModel = ViewModelProvider(this, MovieInfoViewModelFactory(MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId))
+            .get(MovieInfoViewModel::class.java)
 
         watchlistButton = root.findViewById(R.id.buttonWatchlist)
         watchlistButton.setOnClickListener {
@@ -40,6 +49,21 @@ class MovieInfoFragment : Fragment() {
         reviewButton.setOnClickListener {
             viewModel.reviewDialog(requireContext(), MovieInfoFragmentArgs.fromBundle(requireArguments()).movieId, MovieInfoFragmentArgs.fromBundle(requireArguments()).movieTitle)
         }
+
+        // Observe the LiveData containing reviews
+        viewModel.reviews.observe(viewLifecycleOwner) { reviews ->
+            reviewAdapter.submitList(reviews)
+        }
+
+        // Setup RecyclerView
+        val recyclerView: RecyclerView = root.findViewById(R.id.reviewRecycler)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+
+        // Initialize the LogbookAdapter with an empty list
+        reviewAdapter = LogbookAdapter(requireContext(), emptyList())
+
+        // Set the adapter for the RecyclerView
+        recyclerView.adapter = reviewAdapter
 
         return binding.root
     }

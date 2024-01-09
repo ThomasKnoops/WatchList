@@ -3,27 +3,17 @@ package org.thoteman.watchlist.ui.movies
 import android.content.Context
 import android.content.DialogInterface
 import android.text.InputFilter
-import android.util.Log
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
-import com.google.gson.Gson
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import org.thoteman.watchlist.BuildConfig
-import org.thoteman.watchlist.model.MovieInfo
 import com.google.firebase.firestore.FirebaseFirestore
 import org.thoteman.watchlist.R
 import org.thoteman.watchlist.model.MovieReview
-import java.io.IOException
 
 class MovieInfoViewModel(movieId: Int) : ViewModel() {
 
@@ -31,6 +21,8 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
         value = false
     }
     val isInWatchlist: LiveData<Boolean> = _isInWatchlist
+    private val _reviews = MutableLiveData<List<MovieReview>>()
+    val reviews: LiveData<List<MovieReview>> = _reviews
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -64,6 +56,24 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
                 }
 
             }
+        }
+
+        // Check if the user is logged in
+        if (userId != null) {
+            val userReviewsQuery = db.collection("reviews").whereEqualTo("movieId", movieId)
+            val newReviews = mutableListOf<MovieReview>()
+
+            userReviewsQuery.get()
+                .addOnSuccessListener { querySnapshot ->
+                    for (document in querySnapshot.documents) {
+                        val review = document.toObject(MovieReview::class.java)
+                        // Process the review data
+                        if (review != null) {
+                            newReviews.add(review)
+                        }
+                    }
+                    _reviews.postValue(newReviews)
+                }
         }
     }
 

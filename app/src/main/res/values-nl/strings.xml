@@ -35,12 +35,13 @@
     <string name="remove_from_watchlist">Verwijderen van KijkLijst</string>
     <string name="release_date">Datum publicatie: %s</string>
     <string name="loading">Laden…</string>
-    <string name="runtime">Duur: %s minuten</string>
+    <string name="runtime">Duur: %s</string>
     <string name="go_back">Ga terug</string>
     <string name="a_score_from_0_to_10">Een score tussen 0 en 10</string>
     <string name="write_a_review">Schrijf een review</string>
     <string name="cancel">Annuleer</string>
     <string name="_10">10</string>
     <string name="movie_info">Film Details</string>
-    <string name="your_score">Uw score: %1$s / 10</string>
+    <string name="your_score">Score: %1$s / 10</string>
+    <string name="reviews">Beoordelingen:</string>
 </resources>
