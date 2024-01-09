@@ -57,6 +57,11 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
 
             }
         }
+        loadReviews(movieId)
+    }
+
+    private fun loadReviews(movieId: Int) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         // Check if the user is logged in
         if (userId != null) {
@@ -148,6 +153,7 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
                 scoreEditText.setText(context.getString(R.string._10))
 
             saveReview(movieId, movieTitle, scoreEditText.text.toString().toInt(), reviewEditText.text.toString())
+            loadReviews(movieId)
 
             // Dismiss the alert dialog
             dialogInterface.dismiss()
@@ -160,8 +166,4 @@ class MovieInfoViewModel(movieId: Int) : ViewModel() {
 
         alertDialogBuilder.show()
     }
-
-
-
-
 }
